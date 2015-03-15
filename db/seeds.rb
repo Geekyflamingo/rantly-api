@@ -22,5 +22,5 @@ user10 = User.create!( first_name: Faker::Name.first_name, last_name: Faker::Nam
 rant1 = Rant.create!( title: Faker::Lorem.sentence, body: Faker::Lorem.paragraphs.join("\n\n"), user: user1 )
 rant2 = Rant.create!( title: Faker::Lorem.sentence, body: Faker::Lorem.paragraphs.join("\n\n"), user: user10 )
 rant3 = Rant.create!( title: Faker::Lorem.sentence, body: Faker::Lorem.paragraphs.join("\n\n"), user: user3 )
-rant4 = Rant.create!( title: Faker::Lorem.sentence, body: Faker::Lorem.paragraphs.join("\n\n"), user: user2 )
+rant4 = Rant.create!( title: Faker::Lorem.sentence, body: Faker::Lorem.paragraphs.join("\n\n"), user: user1 )
 rant5 = Rant.create!( title: Faker::Lorem.sentence, body: Faker::Lorem.paragraphs.join("\n\n"), user: user6 )
