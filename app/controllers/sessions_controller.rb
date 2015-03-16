@@ -7,9 +7,9 @@ class SessionsController < ApplicationController
    if user && user.authenticate(params[:session][:password])
      session[:user_id] = user.id
      session[:authToken] = generate_auth_token(user.id)
-     render json: { login: { success: true, token: session[:authToken] } }
+     render json: { session: { success: true, token: session[:authToken] } }
    else
-     render json: { login: { success: false, error: "Invalid Username/Password" } }
+     render json: { session: { success: false, error: "Invalid Username/Password" } }
    end
  end
 
