@@ -1,6 +1,6 @@
 class RantsController < ApplicationController
   before_action :set_rant, only: [:show, :update, :destroy]
-  # skip_before_action :require_login, only: [:index]
+  skip_before_action :require_login, only: [:index, :show]
 
   def index
     searched = params[:find]
@@ -13,10 +13,12 @@ class RantsController < ApplicationController
   end
 
   def create
-    @rant = Rant.new(rant_params)
-    @rant.save
-    render json: @rant
-
+    if current_user
+      @rant = Rant.new(rant_params)
+      @rant.user_id = current_user.id
+      @rant.save
+      render json: @rant
+    end
   end
 
   def show

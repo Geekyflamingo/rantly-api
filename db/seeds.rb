@@ -8,7 +8,7 @@
 Rant.delete_all
 User.delete_all
 
-user0 = User.create!(first_name: "Betty", last_name: "White", email: "white@example.com", password: "password", password_confirmation: "password")
+user0 = User.create!(first_name: "Betty", last_name: "White", email: "white@example.com", password: "pass", password_confirmation: "pass")
 user1 = User.create!( first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: "password", password_confirmation: "password" )
 user2 = User.create!( first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: "password", password_confirmation: "password" )
 user3 = User.create!( first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: "password", password_confirmation: "password" )

@@ -2,13 +2,14 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   # protect_from_forgery with: :null_session
-  # before_action :require_login
+
+  before_action :require_login
 
  def current_user
-   if request.headers['Authorization']
-     decoded_auth_token = JWT.decode(request.headers['Authorization'], nil, false)
-     User.find_by(id: decoded_auth_token[0]["user_id"])
-   end
+  if request.headers['Authorization']
+    decoded_auth_token = JWT.decode(request.headers['Authorization'], nil, false)
+    User.find_by(id: decoded_auth_token[0]["user_id"])
+  end
  end
 
  helper_method :current_user
