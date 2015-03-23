@@ -5,20 +5,20 @@ class ApplicationController < ActionController::Base
 
   before_action :require_login
 
- def current_user
-  if request.headers['Authorization']
-    decoded_auth_token = JWT.decode(request.headers['Authorization'], nil, false)
-    User.find_by(id: decoded_auth_token[0]["user_id"])
+  def current_user
+    if request.headers['HTTP_AUTHORIZATION'] != "null"
+      decoded_auth_token = JWT.decode(request.headers['HTTP_AUTHORIZATION'], nil, false)
+      User.find_by(id: decoded_auth_token[0]["user_id"])
+    end
   end
- end
 
- helper_method :current_user
+  helper_method :current_user
 
- private
+  private
 
- def require_login
-   unless current_user
-     render json: { error: "Please signin" }, status: :unauthorized
-   end
- end
+  def require_login
+    unless current_user
+      render json: { error: "Please signin" }, status: :unauthorized
+    end
+  end
 end
